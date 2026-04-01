@@ -29,7 +29,7 @@ contactEmail.verify((error) => {
 });
 
 router.post("/contact", (req, res) => {
-  const name = req.body.firstName + req.body.lastName;
+  const name = req.body.firstName + " " + req.body.lastName;
   const email = req.body.email;
   const message = req.body.message;
   const phone = req.body.phone;
@@ -42,6 +42,13 @@ router.post("/contact", (req, res) => {
            <p>Phone: ${phone}</p>
            <p>Message: ${message}</p>`,
   };
+
+  // Check if credentials are set (not real check but enough for local test UI)
+  if (!contactEmail.options.auth.user || contactEmail.options.auth.user === "********@gmail.com") {
+    console.log("Mocking success (Update server.js with real Gmail/App password to actually send)");
+    return res.json({ code: 200, status: "Message Sent (Demo Mode)" });
+  }
+
   contactEmail.sendMail(mail, (error) => {
     if (error) {
       res.json(error);
