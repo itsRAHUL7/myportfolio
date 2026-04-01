@@ -8,7 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
-app.listen(5000, () => console.log("Server Running"));
+
+// Only listen locally, Vercel handles the server execution in production
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(5000, () => console.log("Server Running locally on port 5000"));
+}
+
+module.exports = app; // Export for Vercel
 console.log(process.env.EMAIL_USER);
 console.log(process.env.EMAIL_PASS);
 
