@@ -7,41 +7,17 @@ const nodemailer = require("nodemailer");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/", router);
 
-// Only listen locally, Vercel handles the server execution in production
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(5000, () => console.log("Server Running locally on port 5000"));
-}
-
-module.exports = app; // Export for Vercel
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
-
-const contactEmail = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: "********@gmail.com",
-    pass: ""
-  },
-});
-
-contactEmail.verify((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Ready to Send");
-  }
-});
-
-router.post("/contact", (req, res) => {
-  const name = req.body.firstName + " " + req.body.lastName;
+// Main handler for the API
+router.post("/contact", async (req, res) => {
+  const name = `${req.body.firstName} ${req.body.lastName}`;
   const email = req.body.email;
   const message = req.body.message;
   const phone = req.body.phone;
+
   const mail = {
     from: name,
-    to: "********@gmail.com",
+    to: process.env.EMAIL_USER || "your-email@gmail.com",
     subject: "Contact Form Submission - Portfolio",
     html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
@@ -49,17 +25,36 @@ router.post("/contact", (req, res) => {
            <p>Message: ${message}</p>`,
   };
 
-  // Check if credentials are set (not real check but enough for local test UI)
-  if (!contactEmail.options.auth.user || contactEmail.options.auth.user === "********@gmail.com") {
-    console.log("Mocking success (Update server.js with real Gmail/App password to actually send)");
+  const contactEmail = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    },
+  });
+
+  // For development without credentials
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.log("Mocking success (Set EMAIL_USER and EMAIL_PASS in environment variables)");
     return res.json({ code: 200, status: "Message Sent (Demo Mode)" });
   }
 
   contactEmail.sendMail(mail, (error) => {
     if (error) {
-      res.json(error);
+      console.error("Error sending mail:", error);
+      res.status(500).json({ code: 500, status: "Error sending message", error: error.message });
     } else {
       res.json({ code: 200, status: "Message Sent" });
     }
   });
 });
+
+app.use("/api", router);
+
+// Only listen locally, Vercel handles the server execution in production
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(5000, () => console.log("Server Running locally on port 5000"));
+}
+
+module.exports = app;
+

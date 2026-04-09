@@ -64,11 +64,11 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <Tab.Pane eventKey="second">
+                      <p>More projects are currently in development. I am constantly working on new ideas and refining existing ones to improve user experience and code quality. Stay tuned for updates!</p>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      <p>In addition to web development, I am also passionate about exploring new technologies like Cloud Computing and AI integration to build smarter applications.</p>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
