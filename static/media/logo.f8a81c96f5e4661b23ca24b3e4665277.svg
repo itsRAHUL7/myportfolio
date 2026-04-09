@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 60">
+  <defs>
+    <!-- Modern Tech Gradient (Deep Blue to Royal Blue) -->
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Sophisticated Highlight -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- The "D" and "T" Fusion Symbol -->
+  <g transform="translate(10, 10)">
+    <!-- Shield/Bracket Shape -->
+    <path d="M5 5 L35 5 Q40 5 40 10 L40 35 Q40 40 35 40 L5 40 Z" fill="none" stroke="url(#primary-grad)" stroke-width="3" />
+    
+    <!-- Stylized 'D' for Dev -->
+    <path d="M12 12 L12 33 Q25 33 25 22.5 Q25 12 12 12" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Interlocking 'T' for Tester with a Checkmark tail -->
+    <path d="M22 15 L32 15 M27 15 L27 30 Q27 35 32 35" fill="none" stroke="url(#primary-grad)" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Unique Mixed Word: DEVTSTR -->
+  <text x="65" y="42" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="32" fill="#ffffff" style="letter-spacing: -1px;">
+    DEV<tspan fill="url(#primary-grad)">TSTR</tspan>
+  </text>
+  
+  <!-- Subtle Tagline -->
+  <rect x="68" y="48" width="130" height="1" fill="url(#primary-grad)" opacity="0.5" />
+  <text x="68" y="58" font-family="Arial" font-size="8" fill="#94a3b8" letter-spacing="2">BUILD • VERIFY • OPTIMIZE</text>
+</svg>

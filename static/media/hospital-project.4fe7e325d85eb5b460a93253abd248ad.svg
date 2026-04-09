@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1" />
+    </linearGradient>
+    <clipPath id="circle-clip">
+      <circle cx="400" cy="250" r="200" />
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg-grad)" rx="20"/>
+
+  <!-- Medical Cross Symbol -->
+  <g transform="translate(650, 50) scale(0.8)">
+    <circle cx="50" cy="50" r="45" fill="#ef4444" opacity="0.1"/>
+    <rect x="40" y="20" width="20" height="60" rx="4" fill="#ef4444"/>
+    <rect x="20" y="40" width="60" height="20" rx="4" fill="#ef4444"/>
+  </g>
+
+  <!-- Hospital Building Illustration -->
+  <rect x="150" y="300" width="500" height="150" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="350" y="380" width="100" height="70" fill="#3b82f6"/>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="24" fill="#1e293b">HOSPITAL MANAGEMENT</text>
+  
+  <!-- Windows -->
+  <g fill="#94a3b8" opacity="0.4">
+    <rect x="180" y="320" width="40" height="40" rx="4"/>
+    <rect x="240" y="320" width="40" height="40" rx="4"/>
+    <rect x="300" y="320" width="40" height="40" rx="4"/>
+    <rect x="460" y="320" width="40" height="40" rx="4"/>
+    <rect x="520" y="320" width="40" height="40" rx="4"/>
+    <rect x="580" y="320" width="40" height="40" rx="4"/>
+  </g>
+
+  <!-- Appointment/Booking Concept Icons -->
+  <g transform="translate(350, 100)">
+    <circle cx="50" cy="50" r="60" fill="#3b82f6" opacity="0.1"/>
+    <path d="M40 30 L60 30 L60 70 L40 70 Z M35 35 L65 35 M35 45 L65 45" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="10" fill="#2563eb" opacity="0.5"/>
+  </g>
+
+  <!-- Stylized Heartbeat/Pulse line -->
+  <path d="M50 450 Q100 450 120 400 L140 480 L160 420 L180 460 Q200 450 750 450" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="1000" stroke-dashoffset="0" opacity="0.4"/>
+</svg>
