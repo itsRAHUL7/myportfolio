@@ -8,6 +8,7 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
 import { BrowserRouter as Router } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -19,9 +20,11 @@ function App() {
         <Projects />
         <Contact />
         <Footer />
+        <Analytics />
       </div>
     </Router>
   );
 }
+
 
 export default App;
