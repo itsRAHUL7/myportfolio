@@ -27,25 +27,35 @@ export const Contact = () => {
     e.preventDefault();
     setButtonText("Sending...");
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+      
       let response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(formDetails),
+        signal: controller.signal
       });
+      
+      clearTimeout(timeoutId);
       setButtonText("Send");
       let result = await response.json();
       setFormDetails(formInitialDetails);
       if (result.code === 200) {
         setStatus({ success: true, message: 'Message sent successfully'});
       } else {
-        setStatus({ success: false, message: 'Something went wrong, please try again later.'});
+        setStatus({ success: false, message: result.status || 'Something went wrong, please try again later.'});
       }
     } catch (error) {
+      if (error.name === 'AbortError') {
+        setStatus({ success: false, message: 'Request timed out. Please check your internet and try again.'});
+      } else {
+        setStatus({ success: false, message: 'Server is currently offline. Please try again later.'});
+      }
       console.error(error);
       setButtonText("Send");
-      setStatus({ success: false, message: 'Server is currently offline. Please try again later.'});
     }
   };
 

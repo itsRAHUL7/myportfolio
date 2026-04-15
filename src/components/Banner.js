@@ -10,10 +10,10 @@ export const Banner = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const toRotate = [ "MERN Stack Developer", "Software Tester", "Web Designer" ];
   const period = 2000;
 
   const tick = useCallback(() => {
+    const toRotate = [ "MERN Stack Developer", "Software Tester", "Web Designer" ];
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
     let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
@@ -32,7 +32,7 @@ export const Banner = () => {
       setLoopNum(loopNum + 1);
       setDelta(500);
     }
-  }, [isDeleting, loopNum, toRotate, text.length]);
+  }, [isDeleting, loopNum, text.length]);
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -61,7 +61,7 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Rahul Portfolio Banner Image"/>
+                  <img src={headerImg} alt="Rahul Portfolio Banner"/>
                 </div>}
             </TrackVisibility>
           </Col>
