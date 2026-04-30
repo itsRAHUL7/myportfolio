@@ -3,7 +3,7 @@
 A modern, high-performance personal portfolio built with **React 19** and **Express 5**. This project is optimized for both **Vercel** (Full Stack) and **GitHub Pages** (Frontend).
 
 ## 🌍 Live Links
-- **Vercel Deployment**: [https://personal-portfolio-delta.vercel.app](https://personal-portfolio-delta.vercel.app) (Serverless API included)
+
 - **GitHub Pages**: [https://itsRAHUL7.github.io/myportfolio/](https://itsRAHUL7.github.io/myportfolio/) (Frontend only)
 
 ## ✨ Technical Highlights
