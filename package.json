@@ -33,7 +33,7 @@
     "web-vitals": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run server\" \"react-scripts start\"",
     "server": "node api/index.js",
     "dev": "concurrently \"npm run server\" \"react-scripts start\"",
     "build": "react-scripts build",

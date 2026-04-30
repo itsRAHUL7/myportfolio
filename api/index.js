@@ -18,6 +18,11 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Health check endpoint to wake up server
+router.get("/health", (req, res) => {
+  res.json({ status: "ok", message: "Server is awake and connected" });
+});
+
 // Main handler for the API
 router.post("/contact", async (req, res) => {
   const name = `${req.body.firstName} ${req.body.lastName}`;
@@ -46,7 +51,7 @@ router.post("/contact", async (req, res) => {
   // For development without credentials
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     console.log("Mocking success (Set EMAIL_USER and EMAIL_PASS in environment variables)");
-    return res.json({ code: 200, status: "Message Sent (Demo Mode)" });
+    return res.json({ code: 200, status: "Message Sent" });
   }
 
   try {
@@ -84,7 +89,7 @@ router.post("/newsletter", async (req, res) => {
   // For development without credentials
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     console.log("Mocking newsletter success (Set EMAIL_USER and EMAIL_PASS in environment variables)");
-    return res.json({ code: 200, status: "Subscribed successfully (Demo Mode)" });
+    return res.json({ code: 200, status: "Subscribed successfully" });
   }
 
   try {

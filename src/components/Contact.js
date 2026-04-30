@@ -75,6 +75,10 @@ export const Contact = () => {
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <h2>Get In Touch</h2>
+                <div style={{display:'flex', gap:'16px', flexWrap:'wrap', marginBottom:'20px'}}>
+                  <a href="mailto:rahulsinghxtech@gmail.com" style={{color:'#AA367C', fontWeight:600, textDecoration:'none'}}>📧 rahulsinghxtech@gmail.com</a>
+                  <a href="https://github.com/itsRAHUL7" target="_blank" rel="noreferrer" style={{color:'#AA367C', fontWeight:600, textDecoration:'none'}}>🐙 github.com/itsRAHUL7</a>
+                </div>
                 <form onSubmit={handleSubmit}>
                   <Row>
                     <Col size={12} sm={6} className="px-1">

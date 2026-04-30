@@ -9,8 +9,17 @@ import { Footer } from "./components/Footer";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react"
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    // Automatically ping the server to wake it up/connect
+    fetch("/api/health")
+      .then(res => res.json())
+      .then(data => console.log("Backend Connected:", data.message))
+      .catch(err => console.error("Backend Connection Error:", err));
+  }, []);
+
   return (
     <Router>
       <div className="App">

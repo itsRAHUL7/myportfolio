@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
+import { HashLink } from 'react-router-hash-link';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -13,7 +14,7 @@ export const Banner = () => {
   const period = 2000;
 
   const tick = useCallback(() => {
-    const toRotate = [ "MERN Stack Developer", "Software Tester", "Web Designer" ];
+    const toRotate = [ "Full Stack Developer", "Software Tester", "AI Automation Engineer", "System Design & Backend", "Web Designer" ];
     let i = loopNum % toRotate.length;
     let fullText = toRotate[i];
     let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
@@ -51,9 +52,16 @@ export const Banner = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Rahul`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "MERN Stack Developer", "Software Tester", "Web Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>I am a passionate MERN Stack Developer with expertise in building robust, scalable web applications using MongoDB, Express.js, React, and Node.js. Additionally, I have a strong background in Software Testing, ensuring high-quality and reliable software delivery.</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                <h1>{`Hi! I'm Rahul`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Full Stack Developer", "Software Tester", "AI Automation Engineer", "Web Designer" ]'><span className="wrap">{text}</span></span></h1>
+                  <p>Software engineer specialising in scalable micro-architectures, AI automation, Software QA, and multi-user collaboration systems. Everything I build aims to be fast, reliable and unnecessarily clean.</p>
+                  <div style={{display:'flex', gap:'12px', flexWrap:'wrap', marginTop:'8px'}}>
+                    <HashLink to='#connect'>
+                      <button className="vvd">Let's Connect <ArrowRightCircle size={25} /></button>
+                    </HashLink>
+                    <a href="https://drive.google.com/file/d/1Jd_nLLsIKmHKbqA2HfBtRtFJTq9GDOQS/view?usp=drive_link" target="_blank" rel="noreferrer">
+                      <button className="vvd" style={{background:'transparent', border:'1px solid #AA367C'}}>Download Resume</button>
+                    </a>
+                  </div>
               </div>}
             </TrackVisibility>
           </Col>
